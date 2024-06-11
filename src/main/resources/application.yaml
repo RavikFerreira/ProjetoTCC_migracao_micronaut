@@ -1,0 +1,37 @@
+datasources:
+  default:
+    password: 2503
+    url: jdbc:postgresql://localhost:5432/project-micronaut
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+    dialect: io.micronaut.data.jdbc.postgres.PostgresDialect
+    maximumPoolSize: 40
+    minimumIdle: 10
+    connectionTimeout: 30000
+    idleTimeout: 10000
+    autoCommit: true
+
+jpa:
+  default:
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+      hibernate.hbm2ddl.auto: update
+    entity-scan:
+      packages: com.example.models
+
+redis:
+  uri: redis://localhost:6379
+  ssl: true
+  timeout: 30s
+  io-thread-pool-size: 5
+  computation-thread-pool-size: 4
+  caches:
+    products:
+      expire-after-write: 60s
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+
